@@ -1,14 +1,13 @@
-
-# Created by https://www.gitignore.io/api/windows,jupyternotebooks
-# Edit at https://www.gitignore.io/?templates=windows,jupyternotebooks
+#git rm -r --cached .
+#git add .
+#git commit -m "untrack files contained in the .gitignore file"
 
 ### JupyterNotebooks ###
 # gitignore template for Jupyter Notebooks
 # website: http://jupyter.org/
 
-#.ipynb_checkpoints
-#*/.ipynb_checkpoints/*
-
+__pycache__
+*.pyc
 # IPython
 profile_default/
 ipython_config.py
