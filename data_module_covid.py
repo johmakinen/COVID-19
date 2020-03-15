@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import requests
+import functools
 
 
 def extract_counts(df):
@@ -12,7 +13,12 @@ def extract_counts(df):
     res = pd.concat([new_dates, pd.Series(
         np.ones(len(new_dates)), name="count")], axis=1)
 
-    return res.groupby('new_dates').count()
+    res = res.groupby('new_dates').count()
+
+    res['days_from_beginning'] = (res.index - res.index[0])
+    res['days_from_beginning'] = res['days_from_beginning'].dt.days.astype(int)
+    res['cum_sum'] = res['count'].cumsum()
+    return res
 
 
 def get_data_from_HS():
