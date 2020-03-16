@@ -18,7 +18,7 @@ def extract_counts(df):
     res['days_from_beginning'] = (res.index - res.index[0])
     res['days_from_beginning'] = res['days_from_beginning'].dt.days.astype(int)
     res['cum_sum'] = res['count'].cumsum()
-    return res
+    return res.reset_index()
 
 
 def get_data_from_HS():
