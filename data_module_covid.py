@@ -26,3 +26,10 @@ def get_data_from_HS():
         "https://w3qa5ydb4l.execute-api.eu-west-1.amazonaws.com/prod/finnishCoronaData")
     data_json = data.json()
     return data_json
+
+
+def get_data_global():
+    url = r"https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv"
+    df = pd.read_csv(url, sep=",").drop(columns=["Lat", "Long"], axis=1)
+    df = df.groupby("Country/Region").sum()
+    return df
